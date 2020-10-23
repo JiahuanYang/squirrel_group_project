@@ -35,8 +35,13 @@ def update_lati(request, squirrel_id):
         form = LatiForm(request.POST or None,
                         request.FILES or None, instance=sighting)
         if form.is_valid():
-             form.save()
-             context = {'form': form}
+            form.Latitude = form.cleaned_data['Latitude']
+            form.Longitude = form.cleaned_data['Longitude']
+            form.Shift = form.cleaned_data['Shift']
+            form.Date = form.cleaned_data['Date']
+            form.Age = form.cleaned_data['Age']
+            form.save()
+            context = {'form': form}
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next) 
     else:

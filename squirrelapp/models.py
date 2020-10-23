@@ -28,7 +28,7 @@ class SquirrelDetails(models.Model):
         choices=SHIFT_CHOICES,
     )
 
-    Date = models.CharField(max_length=8)
+    Date = models.CharField(max_length=10)
 
     Hectare_Squirrel_Number = models.IntegerField
 

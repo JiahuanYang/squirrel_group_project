@@ -9,7 +9,10 @@ class LatiForm(ModelForm):
         model = SquirrelDetails
         fields = [
             'Latitude',
-        ]
+            'Longitude',
+            'Shift',
+            'Date',
+            'Age',]
 
 # LongiForm
 

@@ -3,13 +3,27 @@
 {% load static %}
 {% block title %} - {{ sighting.Unique_Squirrel_ID }}{% endblock %}
 {% block main %}
-<h1>Add a Contractor from our available Contractors!!</h1>
+<h1>Updating Squirrel Sightings!</h1>
 <form id="update_sighting" method="post" action="{% url 'squirrelapp:request' sighting.Unique_Squirrel_ID %}", class="input-group mb-3">
   {% csrf_token %}
-  {{ form.as_p }}
    <input type="hidden" name="next" value="{{ request.path }}">
     <label for="Latitude">Latitude </label>
     <input type="number" name="Latitude" id="Latitude" step="0.000000001"><br><br>
+    <label for="Longitude">Longitude </label>
+    <input type="number" name="Longitude" id="Longitude" step="0.000000001"><br><br>
+    <label for="Shift">Shift </label>
+    <select id="Shift" name="Shift">
+      <option value="AM">AM</option>
+      <option value="PM">PM</option>
+    </select><br><br>
+    <label for="Date">Date </label>
+    <input type="date" name="Date" id="Date"><br><br>
+    <label for="Age">Age </label>
+    <select id="Age" name="Age">
+      <option value="Adult">Adult</option>
+      <option value="Juvenile">Juvenile</option>
+      <option value="None"></option>
+    </select><br><br>
   <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="submit">Update</button>
   </div>
@@ -28,8 +42,38 @@
                     {{sighting.Latitude }}
                   </span>
                 </div>
+		<div>
+                  <span class="text-muted font-italic">Longitude:</span>
+                  <span>
+                    {{ sighting.Longitude }}
+                  </span>
+                </div>
+                <div>
+                  <span class="text-muted font-italic">Unique Squirrel ID:</span>
+                  <span>
+                    {{ sighting.Unique_Squirrel_ID }}
+                  </span>
+                </div>
+                <div>
+                  <span class="text-muted font-italic">Shift:</span>
+                  <span>
+                    {{ sighting.Shift }}
+                  </span>
+                </div>
+                <div>
+                  <span class="text-muted font-italic">Date:</span>
+                  <span>
+                    {{ sighting.Date }}
+                  </span>
+                </div>
+                <div>
+                  <span class="text-muted font-italic">Age</span>
+                  <span>
+                    {{ sighting.Age }}
+                  </span>
+                </div>
                 </p>
             </div>
           </div>
 </div>
-{% endblock %}/
+{% endblock %}
